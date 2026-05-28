@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/score_LAY_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/road_grey"
+    tools:context=".ScoreActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/score_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        tools:text="Game Over!\nScore: 100" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/score_BTN_newGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:text="Start New Game"
+        android:textColor="@color/white" />
+
+</RelativeLayout>
