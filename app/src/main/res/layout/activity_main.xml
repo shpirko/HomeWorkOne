@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/road_grey"
+    tools:context=".MainActivity">
+
+    <!-- 3 Lanes System -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_LL_lanes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <!-- Lane 0 -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!-- Obstacles for Lane 0 -->
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="140dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="240dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="340dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="440dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+
+            <!-- Car in Lane 0 -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_IMG_car0"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="140dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_car" />
+        </RelativeLayout>
+
+        <View android:layout_width="2dp" android:layout_height="match_parent" android:background="#55FFFFFF" />
+
+        <!-- Lane 1 -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!-- Obstacles for Lane 1 -->
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="140dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="240dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="340dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="440dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+
+            <!-- Car in Lane 1 -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_IMG_car1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="140dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_car" />
+        </RelativeLayout>
+
+        <View android:layout_width="2dp" android:layout_height="match_parent" android:background="#55FFFFFF" />
+
+        <!-- Lane 2 -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!-- Obstacles for Lane 2 -->
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="140dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="240dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="340dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="440dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+
+            <!-- Car in Lane 2 -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/main_IMG_car2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="140dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_car" />
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- Lives (Hearts) -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_LL_hearts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/default_margin"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart1"
+            android:layout_width="@dimen/heart_size"
+            android:layout_height="@dimen/heart_size"
+            app:srcCompat="@drawable/heart" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart2"
+            android:layout_width="@dimen/heart_size"
+            android:layout_height="@dimen/heart_size"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            app:srcCompat="@drawable/heart" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_IMG_heart3"
+            android:layout_width="@dimen/heart_size"
+            android:layout_height="@dimen/heart_size"
+            app:srcCompat="@drawable/heart" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- Score Label -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/main_LBL_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/default_margin"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="0" />
+
+    <!-- Movement Controls -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/main_FAB_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:text="Left"
+        android:textColor="@color/white"
+        app:icon="@android:drawable/ic_media_previous"
+        app:iconTint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/main_FAB_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:text="Right"
+        android:textColor="@color/white"
+        app:icon="@android:drawable/ic_media_next"
+        app:iconTint="@color/white" />
+
+</RelativeLayout>
