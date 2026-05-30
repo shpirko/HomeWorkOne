@@ -24,11 +24,11 @@
             android:layout_weight="1">
 
             <!-- Obstacles for Lane 0 -->
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="140dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="240dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="340dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="440dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="20dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="150dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="280dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="410dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_0_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="540dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
 
             <!-- Car in Lane 0 -->
             <androidx.appcompat.widget.AppCompatImageView
@@ -51,11 +51,11 @@
             android:layout_weight="1">
 
             <!-- Obstacles for Lane 1 -->
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="140dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="240dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="340dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="440dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="20dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="150dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="280dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="410dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_1_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="540dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
 
             <!-- Car in Lane 1 -->
             <androidx.appcompat.widget.AppCompatImageView
@@ -78,11 +78,11 @@
             android:layout_weight="1">
 
             <!-- Obstacles for Lane 2 -->
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="40dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="140dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="240dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="340dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
-            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="440dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_0" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="20dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_1" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="150dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_2" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="280dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_3" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="410dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
+            <androidx.appcompat.widget.AppCompatImageView android:id="@+id/main_IMG_obs_2_4" android:layout_width="60dp" android:layout_height="60dp" android:layout_centerHorizontal="true" android:layout_marginTop="540dp" android:visibility="visible" app:srcCompat="@drawable/ic_obstacle" />
 
             <!-- Car in Lane 2 -->
             <androidx.appcompat.widget.AppCompatImageView
@@ -151,6 +151,7 @@
         android:layout_margin="16dp"
         android:text="Left"
         android:textColor="@color/white"
+        app:backgroundTint="@color/purple_800"
         app:icon="@android:drawable/ic_media_previous"
         app:iconTint="@color/white" />
 
@@ -163,6 +164,7 @@
         android:layout_margin="16dp"
         android:text="Right"
         android:textColor="@color/white"
+        app:backgroundTint="@color/purple_800"
         app:icon="@android:drawable/ic_media_next"
         app:iconTint="@color/white" />
 
