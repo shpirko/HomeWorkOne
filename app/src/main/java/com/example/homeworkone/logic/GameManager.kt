@@ -10,7 +10,7 @@ class GameManager(private val initialLives: Int = Constants.GameConfig.INITIAL_L
     var lives: Int = initialLives
         private set
 
-    var carLane: Int = 1 // Middle lane
+    var carLane: Int = Constants.GameConfig.LANES_COUNT / 2 // Middle lane
         private set
 
     // obstacles[row][lane] - 0: empty, 1: obstacle

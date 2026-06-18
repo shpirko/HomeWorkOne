@@ -84,7 +84,9 @@ class MainActivity : AppCompatActivity() {
         main_IMG_cars = arrayOf(
             findViewById(R.id.main_IMG_car0),
             findViewById(R.id.main_IMG_car1),
-            findViewById(R.id.main_IMG_car2)
+            findViewById(R.id.main_IMG_car2),
+            findViewById(R.id.main_IMG_car3),
+            findViewById(R.id.main_IMG_car4)
         )
 
         main_IMG_obstacles = Array(Constants.GameConfig.ROWS_COUNT) { row ->
