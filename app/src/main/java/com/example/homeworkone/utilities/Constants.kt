@@ -6,6 +6,9 @@ object Constants {
         const val LANES_COUNT = 5
         const val ROWS_COUNT = 5
         const val INITIAL_LIVES = 3
+        const val COIN_SCORE = 2
+        const val OBSTACLE_TYPE = 1
+        const val COIN_TYPE = 2
     }
 
     object BundleKeys {

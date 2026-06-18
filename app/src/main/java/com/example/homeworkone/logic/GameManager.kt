@@ -13,7 +13,7 @@ class GameManager(private val initialLives: Int = Constants.GameConfig.INITIAL_L
     var carLane: Int = Constants.GameConfig.LANES_COUNT / 2 // Middle lane
         private set
 
-    // obstacles[row][lane] - 0: empty, 1: obstacle
+    // obstacles[row][lane] - 0: empty, 1: obstacle, 2: coin
     private val obstacles = Array(Constants.GameConfig.ROWS_COUNT) { IntArray(Constants.GameConfig.LANES_COUNT) }
 
     val isGameOver: Boolean
@@ -31,19 +31,22 @@ class GameManager(private val initialLives: Int = Constants.GameConfig.INITIAL_L
         }
     }
 
+    enum class CollisionType {
+        NONE, OBSTACLE, COIN
+    }
+
     /**
      * Ticks the game state:
-     * 1. Check if there was a collision in the bottom row before moving (optional, but we'll do it after move for simplicity)
-     * 2. Move obstacles down
-     * 3. Spawn new obstacle in top row
-     * 4. Check for collision in current car lane
-     * 5. Update score
+     * 1. Move obstacles down
+     * 2. Spawn new obstacle/coin in top row
+     * 3. Check for collision in current car lane
+     * 4. Update score
      *
-     * Returns true if a collision occurred in this tick.
+     * Returns the type of collision that occurred.
      */
-    fun tick(): Boolean {
+    fun tick(): CollisionType {
         if (isGameOver)
-            return false
+            return CollisionType.NONE
 
         score++
 
@@ -54,27 +57,43 @@ class GameManager(private val initialLives: Int = Constants.GameConfig.INITIAL_L
             }
         }
 
-        // Spawn new obstacle randomly in top row
-        spawnObstacle()
+        // Spawn new item randomly in top row
+        spawnItem()
 
-        // Check collision: if there's an obstacle in the last row at the car's lane
-        val collision = obstacles[Constants.GameConfig.ROWS_COUNT - 1][carLane] == 1
-        if (collision) {
+        // Check collision at the car's lane in the bottom row
+        val itemAtCar = obstacles[Constants.GameConfig.ROWS_COUNT - 1][carLane]
+        
+        var result = CollisionType.NONE
+        
+        if (itemAtCar == Constants.GameConfig.OBSTACLE_TYPE) {
             lives--
+            result = CollisionType.OBSTACLE
+            // Remove the obstacle after collision
+            obstacles[Constants.GameConfig.ROWS_COUNT - 1][carLane] = 0
+        } else if (itemAtCar == Constants.GameConfig.COIN_TYPE) {
+            score += Constants.GameConfig.COIN_SCORE
+            result = CollisionType.COIN
+            // Remove the coin after collecting
+            obstacles[Constants.GameConfig.ROWS_COUNT - 1][carLane] = 0
         }
 
-        return collision
+        return result
     }
 
-    private fun spawnObstacle() {
+    private fun spawnItem() {
         // Clear top row
         for (lane in 0 until Constants.GameConfig.LANES_COUNT) {
             obstacles[0][lane] = 0
         }
-        // Randomly spawn one obstacle or none
-        if (Random.nextBoolean()) {
+        
+        // Randomly spawn one obstacle, one coin, or nothing
+        val randomVal = Random.nextInt(100)
+        if (randomVal < 30) { // 30% chance for obstacle
             val lane = Random.nextInt(Constants.GameConfig.LANES_COUNT)
-            obstacles[0][lane] = 1
+            obstacles[0][lane] = Constants.GameConfig.OBSTACLE_TYPE
+        } else if (randomVal < 50) { // 20% chance for coin
+            val lane = Random.nextInt(Constants.GameConfig.LANES_COUNT)
+            obstacles[0][lane] = Constants.GameConfig.COIN_TYPE
         }
     }
 

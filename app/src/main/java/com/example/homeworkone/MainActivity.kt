@@ -33,9 +33,15 @@ class MainActivity : AppCompatActivity() {
         override fun run() {
             if (isGameRunning) {
                 val collision = gameManager.tick()
-                if (collision) {
-                    SignalManager.getInstance().toast("Crash!")
-                    SignalManager.getInstance().vibrate(500)
+                when (collision) {
+                    GameManager.CollisionType.OBSTACLE -> {
+                        SignalManager.getInstance().toast("Crash!")
+                        SignalManager.getInstance().vibrate(500)
+                    }
+                    GameManager.CollisionType.COIN -> {
+                        SignalManager.getInstance().toast("+${Constants.GameConfig.COIN_SCORE} Points!")
+                    }
+                    GameManager.CollisionType.NONE -> {}
                 }
                 refreshUI()
 
@@ -134,11 +140,24 @@ class MainActivity : AppCompatActivity() {
             main_IMG_cars[i].visibility = if (i == gameManager.carLane) View.VISIBLE else View.INVISIBLE
         }
 
-        // Update Obstacles
+        // Update Obstacles and Coins
         for (row in 0 until Constants.GameConfig.ROWS_COUNT) {
             for (lane in 0 until Constants.GameConfig.LANES_COUNT) {
-                val hasObstacle = gameManager.getObstacleAt(row, lane) == 1
-                main_IMG_obstacles[row][lane].visibility = if (hasObstacle) View.VISIBLE else View.INVISIBLE
+                val itemType = gameManager.getObstacleAt(row, lane)
+                val imgView = main_IMG_obstacles[row][lane]
+                when (itemType) {
+                    Constants.GameConfig.OBSTACLE_TYPE -> {
+                        imgView.setImageResource(R.drawable.ic_obstacle)
+                        imgView.visibility = View.VISIBLE
+                    }
+                    Constants.GameConfig.COIN_TYPE -> {
+                        imgView.setImageResource(R.drawable.ic_coin)
+                        imgView.visibility = View.VISIBLE
+                    }
+                    else -> {
+                        imgView.visibility = View.INVISIBLE
+                    }
+                }
             }
         }
     }
