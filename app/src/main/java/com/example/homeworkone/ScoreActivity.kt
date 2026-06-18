@@ -14,6 +14,7 @@ class ScoreActivity : AppCompatActivity() {
 
     private lateinit var score_LBL_title: MaterialTextView
     private lateinit var score_BTN_newGame: MaterialButton
+    private lateinit var score_BTN_menu: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,7 @@ class ScoreActivity : AppCompatActivity() {
     private fun findViews() {
         score_LBL_title = findViewById(R.id.score_LBL_title)
         score_BTN_newGame = findViewById(R.id.score_BTN_newGame)
+        score_BTN_menu = findViewById(R.id.score_BTN_menu)
     }
 
     private fun initViews() {
@@ -38,11 +40,23 @@ class ScoreActivity : AppCompatActivity() {
 
         val message = bundle?.getString(Constants.BundleKeys.MESSAGE_KEY, "Game Over!")
         val score = bundle?.getInt(Constants.BundleKeys.SCORE_KEY, 0)
+        val controlMode = bundle?.getString(Constants.BundleKeys.CONTROL_MODE_KEY)
+        val delay = bundle?.getLong(Constants.BundleKeys.DELAY_KEY, 1000L) ?: 1000L
 
         score_LBL_title.text = "$message\nScore: $score"
 
         score_BTN_newGame.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra(Constants.BundleKeys.CONTROL_MODE_KEY, controlMode)
+                putExtra(Constants.BundleKeys.DELAY_KEY, delay)
+            }
+            startActivity(intent)
+            finish()
+        }
+
+        score_BTN_menu.setOnClickListener {
+            val intent = Intent(this, MenuActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }

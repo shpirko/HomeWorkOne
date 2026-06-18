@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/score_LAY_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/road_grey"
+    android:background="@color/black"
+    android:padding="24dp"
     tools:context=".ScoreActivity">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/score_LBL_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/score_BTN_newGame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Game Over!\nScore: 100" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/score_BTN_newGame"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
-        android:text="Start New Game"
-        android:textColor="@color/white" />
+        android:layout_marginBottom="16dp"
+        android:text="@string/start_new_game"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/purple_800"
+        app:layout_constraintBottom_toTopOf="@+id/score_BTN_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/score_BTN_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/back_to_menu"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/purple_800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

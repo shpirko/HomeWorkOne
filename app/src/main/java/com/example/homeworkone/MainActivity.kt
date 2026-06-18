@@ -1,6 +1,11 @@
 package com.example.homeworkone
 
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -16,7 +21,7 @@ import com.example.homeworkone.utilities.SignalManager
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textview.MaterialTextView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var main_IMG_hearts: Array<AppCompatImageView>
     private lateinit var main_IMG_cars: Array<AppCompatImageView>
@@ -28,6 +33,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gameManager: GameManager
     private val handler = Handler(Looper.getMainLooper())
     private var isGameRunning = false
+
+    private var controlMode: String = Constants.ControlModes.BUTTONS
+    private var gameDelay: Long = 1000L
+
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
+    private var lastMovementTime: Long = 0L
+    private val MOVEMENT_THRESHOLD = 3.0f // Tilt threshold
+    private val MOVEMENT_COOLDOWN = 300L // MS between gyro moves
 
     private val gameRunnable = object : Runnable {
         override fun run() {
@@ -50,11 +64,13 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this@MainActivity, ScoreActivity::class.java).apply {
                         putExtra(Constants.BundleKeys.SCORE_KEY, gameManager.score)
                         putExtra(Constants.BundleKeys.MESSAGE_KEY, "Game Over!")
+                        putExtra(Constants.BundleKeys.CONTROL_MODE_KEY, controlMode)
+                        putExtra(Constants.BundleKeys.DELAY_KEY, gameDelay)
                     }
                     startActivity(intent)
                     finish()
                 } else {
-                    handler.postDelayed(this, Constants.GameConfig.OBSTACLE_DELAY_SECONDS * 1000L)
+                    handler.postDelayed(this, gameDelay)
                 }
             }
         }
@@ -70,8 +86,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Get settings from Intent
+        controlMode = intent.getStringExtra(Constants.BundleKeys.CONTROL_MODE_KEY) ?: Constants.ControlModes.BUTTONS
+        gameDelay = intent.getLongExtra(Constants.BundleKeys.DELAY_KEY, 1000L)
+
         SignalManager.init(this)
         gameManager = GameManager()
+        
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
         findViews()
         initViews()
     }
@@ -104,13 +128,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        main_FAB_left.setOnClickListener {
-            gameManager.moveCarLeft()
-            refreshUI()
-        }
-        main_FAB_right.setOnClickListener {
-            gameManager.moveCarRight()
-            refreshUI()
+        if (controlMode == Constants.ControlModes.GYRO) {
+            main_FAB_left.visibility = View.GONE
+            main_FAB_right.visibility = View.GONE
+        } else {
+            main_FAB_left.setOnClickListener {
+                gameManager.moveCarLeft()
+                refreshUI()
+            }
+            main_FAB_right.setOnClickListener {
+                gameManager.moveCarRight()
+                refreshUI()
+            }
         }
         refreshUI()
     }
@@ -118,12 +147,21 @@ class MainActivity : AppCompatActivity() {
     private fun startGame() {
         if (isGameRunning) return
         isGameRunning = true
-        handler.postDelayed(gameRunnable, Constants.GameConfig.OBSTACLE_DELAY_SECONDS * 1000L)
+        handler.postDelayed(gameRunnable, gameDelay)
+        
+        if (controlMode == Constants.ControlModes.GYRO) {
+            accelerometer?.let {
+                sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_GAME)
+            }
+        }
     }
 
     private fun stopGame() {
         isGameRunning = false
         handler.removeCallbacks(gameRunnable)
+        if (controlMode == Constants.ControlModes.GYRO) {
+            sensorManager.unregisterListener(this)
+        }
     }
 
     private fun refreshUI() {
@@ -172,5 +210,30 @@ class MainActivity : AppCompatActivity() {
         if (!gameManager.isGameOver) {
             startGame()
         }
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
+            val x = event.values[0]
+            val currentTime = System.currentTimeMillis()
+
+            if (currentTime - lastMovementTime > MOVEMENT_COOLDOWN) {
+                if (x > MOVEMENT_THRESHOLD) {
+                    // Tilt Left
+                    gameManager.moveCarLeft()
+                    refreshUI()
+                    lastMovementTime = currentTime
+                } else if (x < -MOVEMENT_THRESHOLD) {
+                    // Tilt Right
+                    gameManager.moveCarRight()
+                    refreshUI()
+                    lastMovementTime = currentTime
+                }
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        // Not used
     }
 }

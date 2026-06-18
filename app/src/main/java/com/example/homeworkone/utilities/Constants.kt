@@ -14,5 +14,12 @@ object Constants {
     object BundleKeys {
         const val SCORE_KEY = "SCORE_KEY"
         const val MESSAGE_KEY = "MESSAGE_KEY"
+        const val CONTROL_MODE_KEY = "CONTROL_MODE_KEY"
+        const val DELAY_KEY = "DELAY_KEY"
+    }
+
+    object ControlModes {
+        const val BUTTONS = "BUTTONS"
+        const val GYRO = "GYRO"
     }
 }

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/road_grey"
+    android:padding="24dp"
+    tools:context=".MenuActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/menu_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/menu_title"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/menu_BTN_highScores"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/high_scores"
+        app:backgroundTint="@color/purple_800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_LBL_title" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/menu_LBL_controlMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/control_mode"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_BTN_highScores" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/menu_TOGGLE_control"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_LBL_controlMode"
+        app:singleSelection="true"
+        app:checkedButton="@+id/menu_BTN_buttons">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_buttons"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/buttons"
+            android:textColor="@color/toggle_text_selector"
+            app:backgroundTint="@color/toggle_background_selector"
+            app:strokeColor="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_gyro"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/gyro"
+            android:textColor="@color/toggle_text_selector"
+            app:backgroundTint="@color/toggle_background_selector"
+            app:strokeColor="@color/white" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/menu_LBL_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/game_speed"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_TOGGLE_control" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/menu_TOGGLE_speed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_LBL_speed"
+        app:singleSelection="true"
+        app:checkedButton="@+id/menu_BTN_fast">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_fast"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fast"
+            android:textColor="@color/toggle_text_selector"
+            app:backgroundTint="@color/toggle_background_selector"
+            app:strokeColor="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_extreme"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/extreme"
+            android:textColor="@color/toggle_text_selector"
+            app:backgroundTint="@color/toggle_background_selector"
+            app:strokeColor="@color/white" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/menu_BTN_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:text="@string/start_new_game"
+        android:textSize="18sp"
+        app:backgroundTint="@color/purple_800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
