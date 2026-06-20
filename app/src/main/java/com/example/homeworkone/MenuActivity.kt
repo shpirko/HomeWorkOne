@@ -16,6 +16,7 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var menu_TOGGLE_control: MaterialButtonToggleGroup
     private lateinit var menu_TOGGLE_speed: MaterialButtonToggleGroup
     private lateinit var menu_BTN_start: MaterialButton
+    private lateinit var menu_BTN_highScores: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +38,21 @@ class MenuActivity : AppCompatActivity() {
         menu_TOGGLE_control = findViewById(R.id.menu_TOGGLE_control)
         menu_TOGGLE_speed = findViewById(R.id.menu_TOGGLE_speed)
         menu_BTN_start = findViewById(R.id.menu_BTN_start)
+        menu_BTN_highScores = findViewById(R.id.menu_BTN_highScores)
     }
 
     private fun initViews() {
         menu_BTN_start.setOnClickListener {
             startGame()
         }
+        menu_BTN_highScores.setOnClickListener {
+            openLeaderboard()
+        }
+    }
+
+    private fun openLeaderboard() {
+        val intent = Intent(this, LeaderboardActivity::class.java)
+        startActivity(intent)
     }
 
     private fun startGame() {

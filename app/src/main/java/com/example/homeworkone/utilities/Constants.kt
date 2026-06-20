@@ -22,4 +22,9 @@ object Constants {
         const val BUTTONS = "BUTTONS"
         const val GYRO = "GYRO"
     }
+
+    object SP_KEYS {
+        const val PLAYLIST_KEY: String = "PLAYLIST_KEY"
+        const val DATA_FILE: String = "DATA_FILE"
+    }
 }

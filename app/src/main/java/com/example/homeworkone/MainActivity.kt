@@ -51,9 +51,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     GameManager.CollisionType.OBSTACLE -> {
                         SignalManager.getInstance().toast("Crash!")
                         SignalManager.getInstance().vibrate(500)
+                        SignalManager.getInstance().playCrashSound()
                     }
                     GameManager.CollisionType.COIN -> {
                         SignalManager.getInstance().toast("+${Constants.GameConfig.COIN_SCORE} Points!")
+                        SignalManager.getInstance().playCoinSound()
                     }
                     GameManager.CollisionType.NONE -> {}
                 }
@@ -61,9 +63,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
                 if (gameManager.isGameOver) {
                     stopGame()
-                    val intent = Intent(this@MainActivity, ScoreActivity::class.java).apply {
+                    val intent = Intent(this@MainActivity, HighScoreActivity::class.java).apply {
                         putExtra(Constants.BundleKeys.SCORE_KEY, gameManager.score)
-                        putExtra(Constants.BundleKeys.MESSAGE_KEY, "Game Over!")
                         putExtra(Constants.BundleKeys.CONTROL_MODE_KEY, controlMode)
                         putExtra(Constants.BundleKeys.DELAY_KEY, gameDelay)
                     }

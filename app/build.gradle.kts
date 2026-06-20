@@ -46,4 +46,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     //Glide
     implementation(libs.glide)
+    //Gson
+    implementation(libs.gson)
+    //Google Maps
+    implementation(libs.play.services.maps)
 }
