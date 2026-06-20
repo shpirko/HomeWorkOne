@@ -68,9 +68,22 @@
         android:text="Submit Score"
         android:textColor="@color/white"
         app:backgroundTint="@color/purple_800"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/highScore_LBL_location_status"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/highScore_TIL_name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/highScore_LBL_location_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Fetching location..."
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/highScore_BTN_submit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

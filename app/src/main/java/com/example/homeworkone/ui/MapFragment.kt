@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapFragment : Fragment() {
 
     private var googleMap: GoogleMap? = null
+    private var pendingLocation: LatLng? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,31 +26,25 @@ class MapFragment : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync { map ->
             googleMap = map
+            // Zoom to pending location if one was requested while loading
+            pendingLocation?.let {
+                zoom(it.latitude, it.longitude)
+            }
         }
         
         return v
     }
 
     fun zoom(lat: Double, lon: Double) {
-        var finalLat = lat
-        var finalLon = lon
-
-        // Fallback for old records without locations
-        if (lat == 0.0 && lon == 0.0) {
-            val disneyLocations = listOf(
-                Pair(28.4177, -81.5812), // Magic Kingdom
-                Pair(28.3747, -81.5494), // Epcot
-                Pair(28.3575, -81.5583), // Hollywood Studios
-                Pair(28.3529, -81.5907)  // Animal Kingdom
-            )
-            val fallback = disneyLocations.random()
-            finalLat = fallback.first
-            finalLon = fallback.second
+        if (lat != 0.0 || lon != 0.0) {
+            val location = LatLng(lat, lon)
+            if (googleMap == null) {
+                pendingLocation = location
+                return
+            }
+            googleMap?.clear()
+            googleMap?.addMarker(MarkerOptions().position(location).title("Score Location"))
+            googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
         }
-
-        val location = LatLng(finalLat, finalLon)
-        googleMap?.clear()
-        googleMap?.addMarker(MarkerOptions().position(location).title("Score Location"))
-        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 }

@@ -216,20 +216,29 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent?) {
         if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
             val x = event.values[0]
+            val y = event.values[1]
             val currentTime = System.currentTimeMillis()
 
+            // Handle Steering (X-axis)
             if (currentTime - lastMovementTime > MOVEMENT_COOLDOWN) {
                 if (x > MOVEMENT_THRESHOLD) {
-                    // Tilt Left
                     gameManager.moveCarLeft()
                     refreshUI()
                     lastMovementTime = currentTime
                 } else if (x < -MOVEMENT_THRESHOLD) {
-                    // Tilt Right
                     gameManager.moveCarRight()
                     refreshUI()
                     lastMovementTime = currentTime
                 }
+            }
+
+            // Handle Speed (Y-axis) - Only in GYRO mode
+            if (controlMode == Constants.ControlModes.GYRO) {
+                // Map Y from [2, 8] to [MIN_DELAY, MAX_DELAY]
+                // Y=2 is Fast (MIN_DELAY), Y=8 is Slow (MAX_DELAY)
+                val clampedY = y.coerceIn(2f, 8f)
+                val normY = (clampedY - 2f) / (8f - 2f) // 0 to 1
+                gameDelay = (Constants.GameConfig.MIN_DELAY + normY * (Constants.GameConfig.MAX_DELAY - Constants.GameConfig.MIN_DELAY)).toLong()
             }
         }
     }

@@ -9,6 +9,8 @@ object Constants {
         const val COIN_SCORE = 2
         const val OBSTACLE_TYPE = 1
         const val COIN_TYPE = 2
+        const val MIN_DELAY = 300L
+        const val MAX_DELAY = 1200L
     }
 
     object BundleKeys {
