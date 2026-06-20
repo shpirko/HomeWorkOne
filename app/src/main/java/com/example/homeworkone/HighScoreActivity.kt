@@ -3,6 +3,7 @@ package com.example.homeworkone
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,11 +23,16 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.google.gson.Gson
+import java.util.Locale
+
+import android.text.Editable
+import android.text.TextWatcher
 
 class HighScoreActivity : AppCompatActivity() {
 
     private lateinit var highScore_LBL_score: MaterialTextView
     private lateinit var highScore_ET_name: TextInputEditText
+    private lateinit var highScore_ET_location: TextInputEditText
     private lateinit var highScore_BTN_submit: MaterialButton
     private lateinit var highScore_LBL_location_status: MaterialTextView
 
@@ -114,6 +120,7 @@ class HighScoreActivity : AppCompatActivity() {
     private fun findViews() {
         highScore_LBL_score = findViewById(R.id.highScore_LBL_score)
         highScore_ET_name = findViewById(R.id.highScore_ET_name)
+        highScore_ET_location = findViewById(R.id.highScore_ET_location)
         highScore_BTN_submit = findViewById(R.id.highScore_BTN_submit)
         highScore_LBL_location_status = findViewById(R.id.highScore_LBL_location_status)
     }
@@ -122,9 +129,37 @@ class HighScoreActivity : AppCompatActivity() {
         highScore_LBL_score.text = "Your Score: $score"
         highScore_BTN_submit.isEnabled = false // Disable until location is found
 
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (highScore_ET_name.text.toString().isNotEmpty()) {
+                    highScore_BTN_submit.isEnabled = true
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        }
+
+        highScore_ET_name.addTextChangedListener(textWatcher)
+        highScore_ET_location.addTextChangedListener(textWatcher)
+
         highScore_BTN_submit.setOnClickListener {
             val name = highScore_ET_name.text.toString()
+            val customLocation = highScore_ET_location.text.toString()
+
             if (name.isNotEmpty()) {
+                if (customLocation.isNotEmpty()) {
+                    // Use Geocoder for custom location
+                    val geocoder = Geocoder(this, Locale.getDefault())
+                    try {
+                        val addresses = geocoder.getFromLocationName(customLocation, 1)
+                        if (!addresses.isNullOrEmpty()) {
+                            lat = addresses[0].latitude
+                            lon = addresses[0].longitude
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
                 saveScore(name, score)
                 goToGameOver()
             } else {

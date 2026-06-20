@@ -21,6 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -33,20 +34,19 @@
         app:layout_constraintBottom_toTopOf="@+id/highScore_TIL_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/highScore_LBL_title"
-        tools:text="Your Score: 100" />
+        app:layout_constraintTop_toBottomOf="@id/highScore_LBL_title" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/highScore_TIL_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:hint="Enter your name"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/orange_primary"
         app:hintTextColor="@color/orange_primary"
-        app:layout_constraintBottom_toTopOf="@+id/highScore_BTN_submit"
+        app:layout_constraintBottom_toTopOf="@+id/highScore_TIL_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/highScore_LBL_score">
@@ -56,6 +56,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
+            android:textColor="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/highScore_TIL_location"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Custom Location (Optional)"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/orange_primary"
+        app:hintTextColor="@color/orange_primary"
+        app:layout_constraintBottom_toTopOf="@+id/highScore_BTN_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/highScore_TIL_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/highScore_ET_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
             android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +95,7 @@
         app:layout_constraintBottom_toTopOf="@+id/highScore_LBL_location_status"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/highScore_TIL_name" />
+        app:layout_constraintTop_toBottomOf="@id/highScore_TIL_location" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/highScore_LBL_location_status"
